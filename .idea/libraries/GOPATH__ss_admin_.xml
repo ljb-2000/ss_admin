@@ -1,0 +1,31 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;ss_admin&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../ss_admin" />
+      <root url="file://$PROJECT_DIR$/../../../ss_sso" />
+      <root url="file://$PROJECT_DIR$/../../../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../../my_dev" />
+      <root url="file://$PROJECT_DIR$/../../../common" />
+      <root url="file://$PROJECT_DIR$/../../../ss_cmdb" />
+      <root url="file://$PROJECT_DIR$/../.." />
+      <root url="file://$PROJECT_DIR$/../../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../qiniupkg.com" />
+    </CLASSES>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../../ss_admin" />
+      <root url="file://$PROJECT_DIR$/../../../ss_sso" />
+      <root url="file://$PROJECT_DIR$/../../../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../../my_dev" />
+      <root url="file://$PROJECT_DIR$/../../../common" />
+      <root url="file://$PROJECT_DIR$/../../../ss_cmdb" />
+      <root url="file://$PROJECT_DIR$/../.." />
+      <root url="file://$PROJECT_DIR$/../../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../qiniupkg.com" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>
