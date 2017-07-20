@@ -58,7 +58,8 @@ func DbInit() {
 	conn_user := udbUser + ":" + udbPawd + "@tcp(" + udbHost + ":" + udbPort + ")/" + udbName + "?charset=" + wdbCharset + "&loc=Local"
 	orm.RegisterDataBase("user", "mysql", conn_user, 5, 30)
 
-	orm.RegisterModelWithPrefix("login_", new(User), new(Role), new(UserRole), new(Functions), new(RoleFunction))
+	orm.RegisterModelWithPrefix("login_", new(User), new(Role), new(UserRole), new(Function), new(RoleFunction))
+	//orm.RunSyncdb("user", false, false)
+	orm.RegisterModelWithPrefix("mg_", new(OperationRecord))
 	//orm.RunSyncdb("default", false, false)
-	orm.RunSyncdb("user", false, false)
 }

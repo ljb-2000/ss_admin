@@ -7,6 +7,38 @@ import (
 
 func init() {
 
+	beego.GlobalControllerRouter["github.com/ss1917/ss_admin/controllers:FuncController"] = append(beego.GlobalControllerRouter["github.com/ss1917/ss_admin/controllers:FuncController"],
+		beego.ControllerComments{
+			Method: "Get",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/ss1917/ss_admin/controllers:FuncController"] = append(beego.GlobalControllerRouter["github.com/ss1917/ss_admin/controllers:FuncController"],
+		beego.ControllerComments{
+			Method: "Post",
+			Router: `/`,
+			AllowHTTPMethods: []string{"post"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/ss1917/ss_admin/controllers:FuncController"] = append(beego.GlobalControllerRouter["github.com/ss1917/ss_admin/controllers:FuncController"],
+		beego.ControllerComments{
+			Method: "Patch",
+			Router: `/`,
+			AllowHTTPMethods: []string{"patch"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/ss1917/ss_admin/controllers:FuncController"] = append(beego.GlobalControllerRouter["github.com/ss1917/ss_admin/controllers:FuncController"],
+		beego.ControllerComments{
+			Method: "Delete",
+			Router: `/:uid`,
+			AllowHTTPMethods: []string{"delete"},
+			MethodParams: param.Make(),
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/ss1917/ss_admin/controllers:HomeController"] = append(beego.GlobalControllerRouter["github.com/ss1917/ss_admin/controllers:HomeController"],
 		beego.ControllerComments{
 			Method: "Get",

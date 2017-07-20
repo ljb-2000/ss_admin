@@ -8,7 +8,7 @@ import (
 var (
 	Users map[string]*User
 )
-
+//status 20：逻辑删除，10：禁用， 0：正常
 type User struct {
 	UserId     int       `orm:"column(user_id);auto"`
 	RegionId   int       `orm:"column(region_id);null"`
@@ -65,7 +65,8 @@ func UserGetAll() (maps []orm.Params, err error) {
 	o := orm.NewOrm()
 	o.Using("user")
 	u := new(User)
-	if _, err = o.QueryTable(u).Exclude("Status", -20).Values(&maps, "UserId", "Username", "Nickname", "Email", "Tel", "Status", "Last_login"); err != nil {
+	if _, err = o.QueryTable(u).Exclude("Status", 20).Values(&maps, "UserId", "Username",
+					"Nickname", "Email", "Tel", "Status", "Last_login"); err != nil {
 		return
 	}
 	return

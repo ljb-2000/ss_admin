@@ -15,7 +15,7 @@ type PasswordController struct {
 
 func (this *PasswordController) Prepare() {
 	Username, User_id, Regionid, _ := utils.LoginAuthentication(beego.AppConfig.String("sso_uri"))
-	if Username == "" {
+	if Username != "" {
 		this.Ctx.Redirect(302, beego.AppConfig.String("login_uri"))
 	}
 	if Regionid != 0 {

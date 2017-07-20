@@ -8,16 +8,18 @@ import (
 	"strconv"
 )
 
-type UserController struct {
+type FuncController struct {
 	beego.Controller
 }
 
-func (this *UserController) Prepare() {
+//鉴定登录和权限
+func (this *FuncController) Prepare() {
+	//登录验证，如果没登录自动跳转登录
 	Username, User_id, Regionid, _ := utils.LoginAuthentication(beego.AppConfig.String("sso_uri"))
-
 	if Username != "" {
 		this.Ctx.Redirect(302, beego.AppConfig.String("login_uri"))
 	}
+
 	if Regionid != 0 {
 		this.Data["json"] = map[string]interface{}{
 			"status": -1,
@@ -28,21 +30,22 @@ func (this *UserController) Prepare() {
 	}
 
 	this.Data["sysmanage"] = true
-	this.Data["usermanage"] = true
+	this.Data["funcmanage"] = true
 	this.Data["user_id"] = User_id
 	this.Data["username"] = Username
 	this.Data["regionid"] = Regionid
 }
 
 // @router / [get]
-func (this *UserController) Get() {
-	userinfo, _ := models.UserGetAll()
-	this.Data["userinfo"] = userinfo
-	this.TplName = "manage/user.html"
+func (this *FuncController) Get() {
+	//models.OperationUpdate
+	models.OperationLog(this.Data["regionid"].(int),this.Data["username"].(string),"访问","权限列表")
+	fmt.Println(this.Data["username"].(string))
+	this.TplName = "manage/role.html"
 }
 
 // @router / [post]
-func (this *UserController) Post() {
+func (this *FuncController) Post() {
 	this.Data["json"] = map[string]interface{}{
 		"status": -2,
 		"msg":    "密码错误",
@@ -51,7 +54,7 @@ func (this *UserController) Post() {
 }
 
 // @router / [patch]
-func (this *UserController) Patch() {
+func (this *FuncController) Patch() {
 	this.Data["json"] = map[string]interface{}{
 		"status": -2,
 		"msg":    "密码错误",
@@ -60,7 +63,7 @@ func (this *UserController) Patch() {
 }
 
 // @router /:uid [delete]
-func (this *UserController) Delete() {
+func (this *FuncController) Delete() {
 	uid := this.GetString(":uid")
 	if uid != "" {
 		if Uid, err := strconv.Atoi(uid); err != nil {

@@ -10,10 +10,10 @@ type RoleFunction struct {
 	FunctionId int       `orm:"column(function_id);null"`
 	RegionId   int       `orm:"column(region_id);null"`
 	Status     int16     `orm:"column(status);null"`
-	UpdatedAt  time.Time `orm:"column(updated_at);type(datetime);null"`
-	CreatedAt  time.Time `orm:"column(created_at);type(datetime);null"`
+	Uptime     time.Time `orm:"column(uptime);type(datetime);null"`
+	Crtime     time.Time `orm:"column(crtime);type(datetime);null"`
 }
 
 func (t *RoleFunction) TableName() string {
-	return "role_function"
+	return "role_functions"
 }

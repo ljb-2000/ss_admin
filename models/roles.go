@@ -10,6 +10,7 @@ var (
 	Roles map[string]*Role
 )
 
+//status 20：逻辑删除，10：禁用， 0：正常
 type Role struct {
 	RoleId   int       `orm:"column(role_id);auto" json:"role_id"`
 	RegionId int       `orm:"column(region_id);null"`
@@ -20,16 +21,16 @@ type Role struct {
 }
 
 func (t *Role) TableName() string {
-	return "role"
+	return "roles"
 }
 
 func RoleGetAll() (maps []orm.Params, err error) {
 	o := orm.NewOrm()
 	o.Using("user")
 	u := new(Role)
-	if _, err = o.QueryTable(u).Exclude("Status", -20).Values(&maps, "RoleId", "RegionId", "RoleName", "Status", "Uptime"); err != nil {
+	if _, err = o.QueryTable(u).Exclude("Status", 20).Values(&maps, "RoleId",
+					"RegionId", "RoleName", "Status", "Uptime"); err != nil {
 		return
 	}
 	return
 }
-

@@ -10,7 +10,5 @@ type HomeController struct {
 
 // @router / [get]
 func (this *HomeController) Get() {
-	this.Data["Email"] = "astaxie@gmail.com"
-	//this.Layout = "base/admin_layout.html"
 	this.TplName = "home.html"
 }
