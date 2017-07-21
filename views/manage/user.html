@@ -62,7 +62,7 @@
 						<div id="grid-pager"></div>
 
 						<script type="text/javascript">
-							var $path_base = "/v1/umg/role";//this will be used in gritter alerts containing images
+							var $path_base = "/mg/umg/role";//this will be used in gritter alerts containing images
 						</script>
 						<!-- PAGE CONTENT ENDS -->
 					</div><!-- /.col -->
@@ -71,35 +71,7 @@
 
 		<!-- basic scripts -->
 
-		<!--[if !IE]> -->
-		{{template "components/menu_left.html" .}}	
-		<script src="/static/js/jquery-2.0.3.min.js"></script>
-		<!--script src="/static/js/jczd.js"></script-->
-
-
-		<script type="text/javascript">
-			window.jQuery || document.write("<script src='/static/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
-		</script>
-
-		<script type="text/javascript">
-			if("ontouchend" in document) document.write("<script src='/static/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-		</script>
-		<script src="/static/js/bootstrap.min.js"></script>
-		<script src="/static/js/typeahead-bs2.min.js"></script>
-
-		<!-- page specific plugin scripts -->
-
-		<script src="/static/js/date-time/bootstrap-datepicker.min.js"></script>
-		<script src="/static/js/jqGrid/jquery.jqGrid.min.js"></script>
-		<script src="/static/js/jqGrid/i18n/grid.locale-en.js"></script>
-
-		<!-- ace scripts -->
-
-		<script src="/static/js/ace-elements.min.js"></script>
-		<script src="/static/js/ace.min.js"></script>
-
-		<!-- inline scripts related to this page -->
-
+		{{template "components/menu_left.html" .}}	{{template "components/footerscript.html" .}}
 		<script type="text/javascript">
 			var grid_data = {{.userinfo}}
 			

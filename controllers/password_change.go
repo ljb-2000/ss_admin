@@ -14,8 +14,9 @@ type PasswordController struct {
 }
 
 func (this *PasswordController) Prepare() {
+	fmt.Println(this.Ctx.GetCookie("auth_key"))
 	Username, User_id, Regionid, _ := utils.LoginAuthentication(beego.AppConfig.String("sso_uri"))
-	if Username != "" {
+	if Username == "" {
 		this.Ctx.Redirect(302, beego.AppConfig.String("login_uri"))
 	}
 	if Regionid != 0 {
@@ -37,9 +38,8 @@ func (this *PasswordController) Get() {
 // @router / [post]
 func (this *PasswordController) Post() {
 	type PasswordInfo struct {
-		Oldpassword  string `json:"oldpassword"`
-		Newpassword1 string `json:"newpassword1"`
-		Newpassword2 string `json:"newpassword2"`
+		Oldpassword string `json:"Oldpassword"`
+		Newpassword string `json:"Newpassword"`
 	}
 
 	var passwordinfo *PasswordInfo = new(PasswordInfo)
@@ -48,10 +48,12 @@ func (this *PasswordController) Post() {
 	user, _ := models.UserGetById(this.Data["user_id"].(int))
 	fmt.Println(this.Data["username"], passwordinfo)
 	if utils.GenMD5(passwordinfo.Oldpassword) == user.Password {
-		if passwordinfo.Newpassword1 == passwordinfo.Newpassword2 {
+		if passwordinfo.Newpassword == passwordinfo.Newpassword {
 			user.Last_login = time.Now()
-			user.Password = utils.GenMD5(passwordinfo.Newpassword1)
+			user.Password = utils.GenMD5(passwordinfo.Newpassword)
+			fmt.Println(user.Password)
 			models.UserUpdate(user)
+			models.OperationLog(this.Data["regionid"].(int),this.Data["username"].(string),"修改","密码")
 			this.Data["json"] = map[string]interface{}{
 				"status":   0,
 				"msg":      "修改成功",

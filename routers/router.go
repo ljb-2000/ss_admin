@@ -13,8 +13,8 @@ import (
 )
 
 func init() {
-	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/umg/",
+	ns := beego.NewNamespace("/mg",
+		beego.NSNamespace("/umg",
 			beego.NSNamespace("/func",
 				beego.NSInclude(
 					&controllers.FuncController{},
