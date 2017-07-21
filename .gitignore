@@ -1,3 +1,5 @@
 lastupdate.tmp
 .idea/*
 ss_admin.exe
+ss_admin.exe*
+commentsRouter_controllers.go
